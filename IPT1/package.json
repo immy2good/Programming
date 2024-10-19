@@ -1,0 +1,6 @@
+{
+  "dependencies": {
+    "p5": "^1.10.0",
+    "p5.fillgradient": "^0.1.1"
+  }
+}
