@@ -1,0 +1,27 @@
+//@version=5
+indicator("Label Line", overlay=true)
+
+// Input for the number of labels to be drawn
+labelCount = input.int(5, title="Number of Labels", minval=1, maxval=100)
+
+// Define the starting bar index for the first label
+startBarIndex = bar_index
+
+// Arrays to store the x and y coordinates for the line plot
+var float[] xCoords = array.new_float()
+var float[] yCoords = array.new_float()
+
+// Loop through and create labels every 10 bars
+maxIterations = 1000  // Set a maximum number of iterations to prevent infinite loop
+for i = 0 to labelCount - 1
+    if i > maxIterations
+        break
+    x = bar_index + (i * 10)
+    y = high + (i * syminfo.mintick * 10)
+    label.new(x, y, style=label.style_label_down, color=color.green, textcolor=color.white, size=size.tiny)
+    array.push(xCoords, x)
+    array.push(yCoords, y)
+
+// Plot the line using the coordinates
+for i = 1 to array.size(xCoords) - 1
+    line.new(int(array.get(xCoords, i - 1)), int(array.get(yCoords, i - 1)), int(array.get(xCoords, i)), int(array.get(yCoords, i)), color=color.red)

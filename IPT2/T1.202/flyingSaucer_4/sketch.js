@@ -14,10 +14,10 @@ function setup()
         y: 100,
         width: 250,
         height: 100,
-        window_width: 0.75,
-        window_height: 0.85,
+        window_width: 0.5,
+        window_height: 0.95,
         base_height: 0.45,
-        num_lights: 20,
+        num_lights: 30,
         brightnesses: [],
         beamOn: false,
         
@@ -30,7 +30,7 @@ function setup()
                 vertex(this.x - 25,this.y + this.height * this.base_height * 0.5);
                 vertex(this.x + 25,this.y + this.height * this.base_height * 0.5);
                 vertex(this.x + 70,height - 100);
-                vertex(this.x - 70,height - 100);
+                vertex(this.x - 70,height - 0);
                 endShape();
             }
         },
@@ -122,9 +122,20 @@ function draw()
 function keyPressed()
 {
     flyingSaucer.beamOn = true;
+    push(); 
+    flyingSaucer.y +=50;
+    pop()
+
 }
 
 function keyReleased()
 {
     flyingSaucer.beamOn = false;
+    
+    if (flyingSaucer.y > height/2)
+    {
+        flyingSaucer.y = 100;
+        flyingSaucer.x = random(0,width);
+    }
+
 }

@@ -11,6 +11,8 @@ function setup()
 function draw()
 {
     background(50,0,80);
+    var locX = width/2; // get it to center
+    var locY = height/2; // get it to center
     
     //draw the ground
     fill(0,50,0);
@@ -18,10 +20,10 @@ function draw()
     
     //draw the flying saucer
     fill(175,238,238);
-    arc(200,100,75,100,PI,TWO_PI)
+    arc(locX,locY,75,100,PI,TWO_PI)
     fill(150);
-    arc(200,100,150,50,PI,TWO_PI);
+    arc(locX,locY,150,50,PI,TWO_PI);
     fill(50);
-    arc(200,100,150,25,0,PI);
+    arc(locX,locY,150,25,0,PI);
     
 }
